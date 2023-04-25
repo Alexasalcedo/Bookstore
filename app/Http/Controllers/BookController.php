@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Comment;
+
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -48,7 +50,8 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return view('books.detailsBook',compact('book'));
+        $comments = $book->comments;
+        return view('books.detailsBook',compact('book','comments'));
     }
 
     /**

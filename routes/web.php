@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Route::resource('book',BookController::class);
+Route::resource('comment',CommentController::class);
 
 Route::middleware([
     'auth:sanctum',

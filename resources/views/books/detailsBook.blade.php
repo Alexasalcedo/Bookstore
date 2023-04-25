@@ -24,6 +24,17 @@
             </li>
         </ul>
         <br>
+        <ul>
+            @foreach($comments as $comment)
+            <li>
+                Nombre: {{ $comment->nombre }}
+            </li>
+            <li>
+                {{ $comment->text }}
+            </li>
+            <br>
+            @endforeach
+        </ul>
         <a href="/book/{{ $book->id }}/edit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Editar</a>
         <br>
         <br>
