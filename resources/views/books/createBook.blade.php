@@ -9,6 +9,8 @@
     <title>Document</title>
 </head>
 <body>
+    <x-app-layout>
+    </x-app-layout>  
     <x-navbar/>
     <div style="background-color: lightgray; color: black; padding: 30px; border-radius: 4px; margin: 16px;">
       <h1>Create Book</h1>
