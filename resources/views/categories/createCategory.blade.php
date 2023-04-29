@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body> 
+<body>
     <x-navbar/>
     <div style="background-color: lightgray; color: black; padding: 30px; border-radius: 4px; margin: 16px;">
-      <h1>Create Book</h1>
-      <form action="/book" method="POST">
+      <h1>Create Category</h1>
+      <form action="/category" method="POST">
         @csrf
         <label for="nombre">Nombre:</label><br>
         <input type="text" name="nombre" value="{{ old('nombre') }}">
@@ -21,9 +21,9 @@
         @enderror
         <br>
 
-        <label for="autor">Autor:</label><br>
-        <input type="text" name="autor" value="{{ old('autor') }}">
-        @error('autor')
+        <label for="descripcion">Descripcion:</label><br>
+        <input type="text" name="descripcion" value="{{ old('descripcion') }}">
+        @error('descripcion')
           <h5>{{ $message }}</h5>
         @enderror
         <br>

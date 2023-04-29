@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Comment;
+use App\Models\Category_Book;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -51,7 +52,9 @@ class BookController extends Controller
     public function show(Book $book)
     {
         $comments = $book->comments;
-        return view('books.detailsBook',compact('book','comments'));
+        $categories = $book->categories;
+        
+        return view('books.detailsBook',compact('book','comments','categories'));
     }
 
     /**

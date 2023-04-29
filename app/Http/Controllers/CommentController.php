@@ -49,17 +49,17 @@ class CommentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Comment $comment): Response
+    public function show(Comment $comment)
     {
-        //
+        return view('comments.detailsComment',compact('comment'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Comment $comment): Response
+    public function edit(Comment $comment)
     {
-        //
+        return view('comments.editComment',compact('comment'));
     }
 
     /**
@@ -67,7 +67,15 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment): RedirectResponse
     {
-        //
+        $request->validate([
+            'nombre' => 'required|max:15',
+            'text' => 'required|max:255'
+        ]);
+        
+        $comment->nombre = $request->nombre;
+        $comment->text = $request->text;
+        $comment->update();
+        return redirect()-> route('book.show',$comment->book_id);
     }
 
     /**
@@ -75,6 +83,7 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment): RedirectResponse
     {
-        //
+        $comment->delete();
+        return redirect('/book');
     }
 }

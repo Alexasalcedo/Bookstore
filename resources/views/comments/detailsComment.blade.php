@@ -11,42 +11,28 @@
 <body>
     <x-navbar/>
     <div style="background-color: lightgray; color: black; padding: 30px; border-radius: 4px; margin: 16px;">
-        <h1>Detalles de libros</h1>
+        <h1>Detalles de Commentario</h1>
         <ul>
-            <li>
-                Nombre: {{ $book->nombre }}
-            </li>
-            <li>
-                Autor: {{ $book->autor }}
-            </li>
-            <li>
-                ID: {{ $book->id }}
-            </li>
-        </ul>
-        <br>
-        <ul>
-            @foreach($comments as $comment)
             <li>
                 Nombre: {{ $comment->nombre }}
             </li>
             <li>
-                {{ $comment->text }}
+                Autor: {{ $comment->text }}
             </li>
-            <br>
-            @endforeach
+            <li>
+                ID: {{ $comment->book_id }}
+            </li>
+            <li>
+                Fecha: {{ $comment->created_at }}
+            </li>
         </ul>
-
-        @foreach($categories as $category)
-
-            <h3>Categoria: {{ $category->nombre }}</h3>
-
-        @endforeach
         <br>
-        <a href="/book/{{ $book->id }}/edit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Editar</a>
+
+        <a href="/comment/{{ $comment->id }}/edit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Editar</a>
         <br>
         <br>
         <p>
-            <form action="/book/{{$book->id}}" method="POST">
+            <form action="/comment/{{$comment->id}}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" value="Eliminar" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
