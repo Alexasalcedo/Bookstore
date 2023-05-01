@@ -13,9 +13,10 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
-        //
+        $categories = Category::get();
+        return view('categories.showCategory',compact('categories'));
     }
 
     /**
@@ -40,7 +41,7 @@ class CategoryController extends Controller
         $category -> nombre = $request->nombre;
         $category -> descripcion = $request->descripcion;
         $category -> save();
-        return redirect('/book');
+        return redirect('/category');
     }
 
     /**

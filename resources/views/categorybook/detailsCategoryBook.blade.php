@@ -11,7 +11,7 @@
 <body>
     <x-navbar/>
     <div style="background-color: lightgray; color: black; padding: 30px; border-radius: 4px; margin: 16px;">
-        <h1>Detalles de Commentario</h1>
+        <h1>Detalles de Categoria</h1>
         <ul>
             <li>
                 ID: {{ $bookCategory->id }}

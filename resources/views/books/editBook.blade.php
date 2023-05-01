@@ -28,6 +28,20 @@
         <h5>{{ $message }}</h5>
       @enderror
       <br>
+
+      <label for="price">Precio:</label><br>
+      <input type="number" name="price" id="price" step="0.01" value="{{ old('price') ?? $book->price }}">
+      @error('price')
+        <h5>{{ $message }}</h5>
+      @enderror
+      <br>
+
+      <label for="trama">Descripción:</label><br>
+      <textarea name="trama" id="trama">{{ old('trama') ?? $book->trama }}</textarea>
+      @error('trama')
+        <h5>{{ $message }}</h5>
+      @enderror
+      <br>
       <br>
       <input type="submit" value="Editar" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
 

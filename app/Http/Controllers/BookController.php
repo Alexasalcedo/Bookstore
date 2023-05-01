@@ -35,13 +35,17 @@ class BookController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'nombre' => 'required|max:255',
-            'autor' => 'required|max:50'
+            'nombre' => 'required|max:55',
+            'autor' => 'required|max:50',
+            'price' => 'numeric|regex:/^\d{1,6}(\.\d{1,2})?$/',
+            'trama' => 'required|max:255'
         ]);
 
         $book = new Book();
         $book -> nombre = $request->nombre;
         $book -> autor = $request->autor;
+        $book->price = $request->price;
+        $book->trama = $request->trama;
         $book -> save();
         return redirect('/book');
     }
@@ -72,11 +76,15 @@ class BookController extends Controller
     {
         $request->validate([
             'nombre' => 'required|max:255',
-            'autor' => 'required|max:50'
+            'autor' => 'required|max:50',
+            'price' => 'numeric|regex:/^\d{1,6}(\.\d{1,2})?$/',
+            'trama' => 'required|max:255'
         ]);
         
         $book->nombre = $request->nombre;
         $book->autor = $request->autor;
+        $book->price = $request->price;
+        $book->trama = $request->trama;
         $book->update();
         return redirect()-> route('book.show',$book);
     }
