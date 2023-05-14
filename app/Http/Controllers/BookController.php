@@ -10,6 +10,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+use Illuminate\Support\Facades\Gate;
+
 class BookController extends Controller
 {
     /**
@@ -17,7 +19,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::get();
+        //Eager Loading
+        $books = Book::with('categories')->get();
         return view('books.showBook',compact('books'));
     }
 
@@ -57,8 +60,9 @@ class BookController extends Controller
     {
         $comments = $book->comments;
         $categories = $book->categories;
+        $archivo = $book->archivo;
         
-        return view('books.detailsBook',compact('book','comments','categories'));
+        return view('books.detailsBook',compact('book','comments','categories','archivo'));
     }
 
     /**
@@ -66,7 +70,11 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        return view('books.editBook',compact('book'));
+        if (Gate::allows('isAdmin')) {
+            return view('books.editBook',compact('book'));
+        } else {
+            abort(403);
+        }
     }
 
     /**

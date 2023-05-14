@@ -29,11 +29,18 @@
                             <div style="max-width: 200px; word-wrap: break-word;">
                                 <h2 class="text-sm text-gray-700">
                                     <a href="/book/{{ $b->id }}" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded" style="font-size: 1rem">{{ $b->nombre }}</a>
+                                    @foreach ($b->categories as $c)
+                                        <br>    
+                                        <p class="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">{{ $c->nombre }}</p>
+                                        <br>
+                                    @endforeach
                                 </h2>
                             </div>
                             <br>
                             <br>
                             <p class="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">{{ $b->autor }}</p>
+                            <br>
+                            <br>
                         </div>
                     </div>
                 @endforeach

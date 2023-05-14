@@ -26,11 +26,21 @@
             <li>Trama: {{ $book->trama }}</li>
         </ul>
         </div>
+        @if(isset($archivo))
+            <a href='/archivo/{{$archivo->id}}'>Pdf de libro</a>
+            <form action="{{route('archivo.destroy',$archivo) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type='submit'>Eliminar archivo</button>
+            </form>
+        @else
+            No existe pdf de este libro.
+        @endif   
         <br>
         @foreach($categories as $category)
 
             <h3>Categoria:  <a href="/bookCategory/{{ $category->id }}" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 rounded">{{ $category->nombre }}</a></h3>
-            
+
         @endforeach
         <br>
         <ul>

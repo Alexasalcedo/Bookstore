@@ -22,6 +22,7 @@ Route::resource('book',BookController::class);
 Route::resource('comment',CommentController::class);
 Route::resource('category',CategoryController::class);
 Route::resource('bookCategory',BookCategoryController::class);
+Route::resource('archivo',ArchivoController::class);
 
 Route::middleware([
     'auth:sanctum',
