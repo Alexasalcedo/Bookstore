@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/book/search', [BookController::class, 'search'])->name('books.search');
 Route::resource('book',BookController::class);
 Route::resource('comment',CommentController::class);
 Route::resource('category',CategoryController::class);

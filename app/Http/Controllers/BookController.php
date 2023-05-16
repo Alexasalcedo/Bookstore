@@ -50,7 +50,7 @@ class BookController extends Controller
         $book->price = $request->price;
         $book->trama = $request->trama;
         $book -> save();
-        return redirect('/book');
+        return redirect()->route('book.index')->with('book','guardado');
     }
 
     /**
@@ -105,4 +105,12 @@ class BookController extends Controller
         $book->delete();
         return redirect('/book');
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('q');
+        $books = Book::where('nombre', 'like', '%'.$query.'%')->orWhere('autor', 'like', '%'.$query.'%')->get();
+        return view('books.search', ['books' => $books, 'query' => $query]);
+    }
+
 }
