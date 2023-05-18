@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Database\Factories\BookFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Book extends Model
 {
@@ -33,5 +34,11 @@ class Book extends Model
     protected static function Factory(): Factory
     {
         return BookFactory::new();
+    }
+    protected function titulo(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => strtolower($value),
+        );
     }
 }

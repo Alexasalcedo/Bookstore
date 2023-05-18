@@ -85,16 +85,22 @@
         </ul>
         <br>
 
-        <a href="/category/{{ $category->id }}/edit" class="bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded" style="background-color: #1c232e; color: #9e9c71;">Editar</a>
-        <br>
-        <br>
-        <p>
-            <form action="/category/{{$category->id}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <input type="submit" value="Eliminar" class="bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded" style="background-color: #1c232e; color: #9e9c71;">
-            </form>
-        </p>
+        @auth
+            @can('isAdmin')
+
+            <a href="/category/{{ $category->id }}/edit" class="bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded" style="background-color: #1c232e; color: #9e9c71;">Editar</a>
+            <br>
+            <br>
+            <p>
+                <form action="/category/{{$category->id}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" value="Eliminar" class="bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded" style="background-color: #1c232e; color: #9e9c71;">
+                </form>
+            </p>
+
+            @endcan
+        @endauth
     </div>
 </body>
 </html>

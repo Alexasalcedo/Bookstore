@@ -12,9 +12,15 @@
    
     <x-navbar/>
     <div style="background-color: lightgray; color: black; padding: 30px; border-radius: 4px; margin: 16px;">
-    <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-        <a href="/category/create">Agrega Categorias</a><br>
-    </button>  
+
+    @auth
+        @can('isAdmin')
+        <button class="bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded" style="background-color: #1c232e;">
+            <a href="/category/create" style="color: #9e9c71;">Agrega Categorias</a><br>
+        </button>
+        <br>
+        @endcan
+    @endauth
 
     <section class="bg-white dark:bg-gray-900">
         <div class="container px-6 py-10 mx-auto">

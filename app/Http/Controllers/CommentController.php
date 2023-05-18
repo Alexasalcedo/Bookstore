@@ -13,9 +13,10 @@ class CommentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
-        //
+        $comments = Comment::with('book')->get();
+        return view('comments.indexComment',compact('comments'));
     }
 
     /**

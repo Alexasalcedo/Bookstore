@@ -61,6 +61,7 @@ class BookController extends Controller
         $comments = $book->comments;
         $categories = $book->categories;
         $archivo = $book->archivo;
+        $book->titulo = $book->nombre;
         
         return view('books.detailsBook',compact('book','comments','categories','archivo'));
     }

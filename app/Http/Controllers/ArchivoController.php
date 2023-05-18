@@ -48,7 +48,7 @@ class ArchivoController extends Controller
             $book -> archivo()->save($archivos);
             $archivos->save();
         }
-        return redirect()->route('archivo.index');
+        return redirect()->route('book.index');
     }
 
     /**

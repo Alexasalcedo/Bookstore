@@ -21,7 +21,7 @@
             </div>
             <ul style="font-size: 1.3rem;">
                 <li>ID: {{ $book->id }}</li>
-                <li>Nombre: {{ $book->nombre }}</li>
+                <li>Nombre: {{ $book->titulo }}</li>
                 <li>Autor: {{ $book->autor }}</li>
                 <li>Precio: {{ $book->price }}</li>
                 <li>Trama: {{ $book->trama }}</li>
@@ -41,6 +41,14 @@
             @endauth
         @else
             No existe pdf de este libro.
+            @auth
+                @can('isAdmin')
+                <br>
+                <br>
+                <a href="/archivo/create" class="bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded" style="background-color: #1c232e; color: #9e9c71;">Agrega PDF</a>
+                <br>
+                @endcan
+            @endauth
         @endif   
         <br>
         @foreach($categories as $category)
