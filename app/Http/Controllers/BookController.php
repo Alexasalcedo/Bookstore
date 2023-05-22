@@ -29,7 +29,11 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('books.createBook');
+        if (Gate::allows('isAdmin')) {
+            return view('books.createBook');
+        } else {
+            abort(403);
+        }
     }
 
     /**
